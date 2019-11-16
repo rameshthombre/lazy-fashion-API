@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="input_metadata" format="json">
+      <types:shape format="weave" example="examples/input_data.json"><![CDATA[%dw 2.0
+
+type input_metadata = {|
+  id: String, 
+  name: String, 
+  address: String, 
+  city: String, 
+  state: String, 
+  postalcode: String, 
+  country: String
+|} {"example": "{\"id\":\"01\",\"name\":\"Ramesh Thombre\",\"address\":\"Mumbai Banglore highway\",\"city\":\"Baner\",\"state\":\"MH\",\"postalcode\":\"411045\",\"country\":\"India\"}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#3a7a740b-0473-42ff-ba30-cd07c2ba8f67">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="input_metadata"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
