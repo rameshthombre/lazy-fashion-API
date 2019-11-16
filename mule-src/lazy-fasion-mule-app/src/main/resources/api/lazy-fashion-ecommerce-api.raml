@@ -1,0 +1,60 @@
+#%RAML 1.0
+title: Lazy Fashion eCommerce API
+
+
+/customers:
+  get:
+    displayName: Get customer
+    description: retrievs customers information.
+    responses:
+      200:
+        body:
+          application/json:
+      404:
+        body:
+          application/json:
+  post:
+    displayName: post customer
+    description: accepts customers inforamtion.
+    body:
+      application/json:
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "message" : "customer created"
+              }
+      400:
+        body:
+          application/json:
+            example:
+              {
+                "message" : "bad request"
+              }
+  put:
+    displayName : update customer
+    description: updates customer information.
+    body:
+      application/json:
+  /{customer_id}:
+    displayName: Get a specific customer
+    description: retrives a specific customer
+    get:
+      description: get a specific customer
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/CustomerNoId.raml
+        404:
+          body:
+            application/json:
+              example: {"message" : "id not matching with the records"}
+              
+    patch:
+      description: update customer ID
+    delete:
+      description: delete a specific customer
+  
